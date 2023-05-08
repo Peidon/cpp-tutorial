@@ -7,7 +7,6 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-    vector<int> second = { 10, 20, 30, 30, 20, 10, 10, 20 };
     vector<int> a = {1, 2, 3};
     vector<int> b = {4, 5, 6};
 
