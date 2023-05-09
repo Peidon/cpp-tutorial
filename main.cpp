@@ -3,6 +3,8 @@
 #include <vector>
 #include "solution.h"
 
+#include "letcode/stock.h"
+
 using namespace std;
 
 int main(int argc, char **argv)
@@ -22,7 +24,11 @@ int main(int argc, char **argv)
         l = l->next;
     }
 
-    cout << endl;
+    cout << endl << "LeetCode Solution" << endl;
+
+    letcode::Solution* sl = new letcode::Solution();
+    vector<int> prices = {7,6,4,3,1};
+    cout << sl -> maxProfit(prices) << endl;
 
     if (argc < 2)
     {
