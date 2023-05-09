@@ -13,20 +13,16 @@ struct ListNode
 
 ListNode *buildList(vector<int> a)
 {
-    ListNode *l1 = new ListNode();
-    ListNode *p = l1;
-
-    for (const int num: a)
-    {
-        if (!p)
-        {
-            p = new ListNode();
-        }
-
-        p->val = num;
-        p = p->next;
+    ListNode* h = new ListNode(); // head
+    ListNode* t = h; // tail
+    
+    for(const int item: a) {
+        ListNode* node = new ListNode(item);
+        t->next = node;
+        t = t->next;
     }
-    return l1;
+    
+    return h->next;
 }
 
 class Solution
@@ -35,12 +31,12 @@ public:
     ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
     {
         int res_val = l1->val + l2->val;
-        int overflow = res_val % 10;
+        int overflow = res_val / 10;
         
-        ListNode *res = new ListNode(res_val / 10);
+        ListNode *res = new ListNode(res_val % 10);
 
         // temparory point
-        ListNode *tp = res->next;
+        ListNode *tp = res;
 
         while (l1->next && l2->next)
         {
@@ -49,14 +45,13 @@ public:
 
             // build next node
             res_val = l1->val + l2->val + overflow;
-            ListNode *next_node = new ListNode(res_val / 10);
-
-            tp = next_node;
+            ListNode *next_node = new ListNode(res_val % 10);
 
             // reset next overflow
-            overflow = res_val % 10;
+            overflow = res_val / 10;
 
             // point to next node
+            tp->next = next_node;
             tp = tp->next;
         }
 
@@ -65,14 +60,13 @@ public:
             l1 = l1->next;
             res_val = l1->val + overflow;
 
-            ListNode *next_node = new ListNode(res_val / 10);
-
-            tp = next_node;
+            ListNode *next_node = new ListNode(res_val % 10);
 
             // reset next overflow
-            overflow = res_val % 10;
+            overflow = res_val / 10;
 
             // point to next node
+            tp->next = next_node;
             tp = tp->next;
         }
 
@@ -81,14 +75,13 @@ public:
             l2 = l2->next;
             res_val = l2->val + overflow;
 
-            ListNode *next_node = new ListNode(res_val / 10);
-
-            tp = next_node;
+            ListNode *next_node = new ListNode(res_val % 10);
 
             // reset next overflow
-            overflow = res_val % 10;
+            overflow = res_val / 10;
 
             // point to next node
+            tp->next = next_node;
             tp = tp->next;
         }
 
