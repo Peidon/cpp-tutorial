@@ -4,6 +4,7 @@
 #include "solution.h"
 
 #include "letcode/stock.h"
+#include "letcode/parenth_gen.h"
 
 using namespace std;
 
@@ -29,6 +30,13 @@ int main(int argc, char **argv)
     letcode::Solution* sl = new letcode::Solution();
     vector<int> prices = {7,6,4,3,1};
     cout << sl -> maxProfit(prices) << endl;
+
+    letcode22::Solution* sl22 = new letcode22::Solution();
+    vector<string> parenths = sl22->generateParenthesis(3);
+    for (const string item : parenths)
+    {
+        cout << item << endl;
+    }
 
     if (argc < 2)
     {
