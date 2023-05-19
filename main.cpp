@@ -5,15 +5,11 @@
 
 #include "letcode/stock.h"
 #include "letcode/parenth_gen.h"
-#include "co/unitest.h"
 
 using namespace std;
 
 int main(int argc, char **argv)
 {
-    flag::init(argc, argv);
-    unitest::run_all_tests();
-    
     vector<int> a = {1, 2, 3};
     vector<int> b = {4, 5, 6};
 
