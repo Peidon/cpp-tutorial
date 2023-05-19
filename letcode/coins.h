@@ -22,13 +22,14 @@ private:
             temp = j - k *coins_[i];
             k++;
         }
-        
+
+        return sum;
     }
 
 public:
     Comb() : coins_ {1, 5, 10, 20, 50, 100} {};
 
-    ~Comb() { delete coins_; };
+    ~Comb() {};
 
     int solution_N(int N)
     {
