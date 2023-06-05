@@ -2,6 +2,9 @@ file(GLOB SRC_FILES *.cc)
 
 set(CODE_TEST letcode)
 
+# Enable testing for the project
+enable_testing()
+
 add_executable(${CODE_TEST} ${SRC_FILES})
 target_link_libraries(${CODE_TEST} coost::co)
-add_test(${CODE_TEST} ${CODE_TEST})
+add_test(NAME ${CODE_TEST} COMMAND ${CODE_TEST})

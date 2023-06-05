@@ -34,6 +34,10 @@ public:
     int solution_N(int N)
     {
         long F[N+1];
+        for (int i =1; i <= N; i++)
+        {
+            F[i] = 0;
+        }
         F[0] = 1;
 
         for(const int coin_val : coins_)
