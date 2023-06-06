@@ -6,6 +6,13 @@ DEF_test(unique_path)
 {
     auto c = letcode63::Solution();
 
+    DEF_case(path_0)
+    {
+        vector<vector<int>> input = {{1,0}};
+        int a = c.uniquePathsWithObstacles(input);
+        EXPECT_EQ(a, 0);
+    }
+
     DEF_case(path_1)
     {
         vector<vector<int>> input = {{0,1},{0,0}};
@@ -18,6 +25,12 @@ DEF_test(unique_path)
         vector<vector<int>> input = {{0,0},{0,0}};
         int a = c.uniquePathsWithObstacles(input);
         DLOG << "path_2" << a;
+        EXPECT_EQ(a, 2);
+    }
+    DEF_case(path_3)
+    {
+        vector<vector<int>> input = {{0,0,0},{0,1,0},{0,0,0}};
+        int a = c.uniquePathsWithObstacles(input);
         EXPECT_EQ(a, 2);
     }
 }
