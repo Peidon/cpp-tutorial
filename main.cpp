@@ -1,7 +1,7 @@
 #include <iostream>
 #include "TutorialConfig.h.in"
 #include <vector>
-#include "solution.h"
+#include "letcode/solution.h"
 
 #include "letcode/stock.h"
 #include "letcode/parenth_gen.h"
