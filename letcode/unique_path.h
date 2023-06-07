@@ -39,8 +39,6 @@ namespace letcode63
 
             dp[0][0] = obstacleGrid[0][0] ^ 1;
 
-            int v_size = dp[0].size() - 1;
-
             for (int i = 0; i < dp.size(); i++)
             {
                 auto v = dp.at(i);
@@ -72,7 +70,7 @@ namespace letcode63
                     }
                 }
             }
-            return dp[dp.size() - 1][v_size];
+            return dp[dp.size() - 1].back();
         }
     };
 }
