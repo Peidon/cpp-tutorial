@@ -1,5 +1,5 @@
 # cpp-tutorial
-Read more and write batter
+Read more and write better
 
 ## envirement
 C++ 11
