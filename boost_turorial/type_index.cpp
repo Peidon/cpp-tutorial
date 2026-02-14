@@ -37,7 +37,7 @@ int main()
             (v))>()
        << endl;
   cout << type_id_with_cvr<decltype(
-            move((v)))>()
+            std::move((v)))>()
        << endl;
   cout << type_id_with_cvr<decltype(
             (it))>()

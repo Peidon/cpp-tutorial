@@ -2,3 +2,6 @@
 .xmake/
 build/
 Testing/
+coost/
+**.out
+**.dSYM
