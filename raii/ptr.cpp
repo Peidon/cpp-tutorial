@@ -21,10 +21,12 @@ private:
 };
 
 /*
-没有实现拷贝构造
+The copy constructor is not implemented.
 
-此时
 smart_ptr<shape> ptr1{create_shape(shape_type::circle)};
 smart_ptr<shape> ptr2{ptr1};
-在编译时不会出错，但在运行时却会有未定义行为——由于会对同一内存释放两次，通常情况下会导致程序崩溃
+
+It will not cause errors during compilation, 
+but will exhibit undefined behavior at runtime 
+—- because it will free the same memory twice, which usually leads to program crashes.
 */

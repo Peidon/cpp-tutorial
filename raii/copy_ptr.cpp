@@ -16,7 +16,7 @@ public:
     T *operator->() const { return ptr_; }
     operator bool() const { return ptr_; }
 
-    // 实现拷贝构造
+    // Copy Constructor
     smart_ptr(smart_ptr &other) { ptr_ = other.release(); }
     smart_ptr &operator=(smart_ptr &rhs)
     {

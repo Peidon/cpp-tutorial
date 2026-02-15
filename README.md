@@ -20,6 +20,6 @@ cmake version 4.2.3
 ## Parallelism and concurrency
 
 ## RAII
-Resource Acquisition is the initialization.
+Resource Acquisition Is Initialization.
 
 ## Coost or Boost

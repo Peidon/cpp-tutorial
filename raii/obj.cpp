@@ -1,26 +1,45 @@
 
 #include <stdio.h>
+#include "shape.h"
+#include <utility>
 
-class Obj {
-public:
-  Obj() { puts("Obj()"); }
-  ~Obj() { puts("~Obj()"); }
-};
+// Inference collapse
 
-void foo(int n)
+
+void foo(const shape&)
 {
-  Obj obj;
-  if (n == 42)
-    throw "life, the universe and everything";
+  puts("foo(const shape&)");
 }
 
+void foo(shape&&)
+{
+  puts("foo(shape&&)");
+}
+
+void bar(const shape& s)
+{
+  puts("bar(const shape&)");
+  foo(s);
+}
+
+// Named rvalue references are lvalues.
+void bar(shape&& s)
+{
+  puts("bar(shape&&)");
+  foo(s); // s is an lvalue here !
+}
+
+// To keep the value category, lvalue is always lvalue, rvalue is rvalue
+template <typename T>
+void bar(T&& s)
+{
+  foo(std::forward<T>(s));
+  // std::forward restores the original value category.
+  // That equals static_cast<circle&&>(s)
+}
+
+// g++ shape.cpp obj.cpp -std=c++17 -o main.out
 int main()
 {
-  try {
-    foo(41);
-    foo(42);
-  }
-  catch (const char* s) {
-    puts(s);
-  }
+  bar(circle());
 }
