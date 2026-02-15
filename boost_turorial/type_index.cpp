@@ -33,13 +33,10 @@ int main()
   cout
     << type_id_with_cvr<const int>()
     << endl;
-  cout << type_id_with_cvr<decltype(
-            (v))>()
+  cout << type_id_with_cvr<decltype(v)>()
        << endl;
-  cout << type_id_with_cvr<decltype(
-            std::move((v)))>()
+  cout << type_id_with_cvr<decltype(std::move(v))>()
        << endl;
-  cout << type_id_with_cvr<decltype(
-            (it))>()
+  cout << type_id_with_cvr<decltype((it))>()
        << endl;
 }

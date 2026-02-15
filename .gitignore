@@ -3,5 +3,7 @@
 build/
 Testing/
 coost/
+spdlog/
 **.out
 **.dSYM
+**.log
