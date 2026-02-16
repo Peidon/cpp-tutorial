@@ -1,6 +1,11 @@
 
 #include <vector>
-// 六种面额 1、5、10、20、50、100 元的纸币，假设每种币值的数量都足够多，编写程序求组成N元（N为0~10000的非负整数）的不同组合的个数
+/**
+ * Given six denominations of banknotes: 1, 5, 10, 20, 50, and 100, 
+ * and assuming there are sufficient quantities of each denomination, 
+ * write a program to calculate the number of different combinations 
+ * that can form N (N is a non-negative integer from 0 to 10000).
+ */
 class Comb
 {
 private:
