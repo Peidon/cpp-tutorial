@@ -1,3 +1,4 @@
+#pragma once
 #include <vector>
 
 using namespace std;
@@ -9,15 +10,17 @@ struct ListNode
     ListNode() : val(0), next(nullptr) {}
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
+
+    ~ListNode() = default;
 };
 
-ListNode *buildList(vector<int> a)
+inline ListNode *buildList(const vector<int>& a)
 {
-    ListNode* h = new ListNode(); // head
+    auto* h = new ListNode(); // head
     ListNode* t = h; // tail
     
     for(const int item: a) {
-        ListNode* node = new ListNode(item);
+        auto* node = new ListNode(item);
         t->next = node;
         t = t->next;
     }
@@ -28,14 +31,14 @@ ListNode *buildList(vector<int> a)
 class Solution
 {
 public:
-    ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
+    static ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
     {
         int res_val = l1->val + l2->val;
         int overflow = res_val / 10;
         
-        ListNode *res = new ListNode(res_val % 10);
+        auto *res = new ListNode(res_val % 10);
 
-        // temparory point
+        // temporary point
         ListNode *tp = res;
 
         while (l1->next && l2->next)
@@ -45,7 +48,7 @@ public:
 
             // build next node
             res_val = l1->val + l2->val + overflow;
-            ListNode *next_node = new ListNode(res_val % 10);
+            auto *next_node = new ListNode(res_val % 10);
 
             // reset next overflow
             overflow = res_val / 10;
@@ -60,7 +63,7 @@ public:
             l1 = l1->next;
             res_val = l1->val + overflow;
 
-            ListNode *next_node = new ListNode(res_val % 10);
+            auto *next_node = new ListNode(res_val % 10);
 
             // reset next overflow
             overflow = res_val / 10;
@@ -75,7 +78,7 @@ public:
             l2 = l2->next;
             res_val = l2->val + overflow;
 
-            ListNode *next_node = new ListNode(res_val % 10);
+            auto *next_node = new ListNode(res_val % 10);
 
             // reset next overflow
             overflow = res_val / 10;

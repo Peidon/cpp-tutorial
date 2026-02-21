@@ -1,4 +1,6 @@
 #include <iostream>
+#include <type_traits>
+
 #include "TutorialConfig.h.in"
 #include <vector>
 #include "letcode/solution.h"
@@ -16,10 +18,9 @@ int main(int argc, char **argv)
     ListNode* l1 = buildList(a);
     ListNode* l2 = buildList(b);
 
-    Solution* so = new Solution();
-    ListNode* l = so->addTwoNumbers(l1, l2);
+    const ListNode* l = Solution::addTwoNumbers(l1, l2);
 
-    while (l)
+    while (l != nullptr)
     {
         cout << l->val << " ";
         l = l->next;

@@ -1,4 +1,4 @@
-
+#pragma once
 template <typename T>
 struct has_reserve
 {
