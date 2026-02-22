@@ -1,3 +1,4 @@
+#pragma once
 namespace letcode24{
 
 /**
@@ -17,7 +18,7 @@ class Solution
 public:
     ListNode *swapPairs(ListNode *head)
     {
-        ListNode* dummyHead;
+        ListNode* dummyHead = new ListNode();
         dummyHead->next = head;
         auto temp = dummyHead;
         while (temp->next!= nullptr && temp->next->next != nullptr)

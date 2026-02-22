@@ -18,4 +18,6 @@ target_link_libraries(bootest
         Boost::unit_test_framework
 )
 
+target_include_directories(type_index PRIVATE /opt/homebrew/opt/boost/include)
+
 add_test(NAME my_boost_tests COMMAND bootest)

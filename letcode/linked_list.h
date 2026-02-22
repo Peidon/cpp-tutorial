@@ -8,8 +8,8 @@ struct ListNode
     int val;
     ListNode *next;
     ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
+    explicit ListNode(const int x) : val(x), next(nullptr) {}
+    ListNode(const int x, ListNode *next) : val(x), next(next) {}
 
     ~ListNode() = default;
 };
@@ -17,15 +17,34 @@ struct ListNode
 inline ListNode *buildList(const vector<int>& a)
 {
     auto* h = new ListNode(); // head
-    ListNode* t = h; // tail
+    const shared_ptr<ListNode> p(h);
+    ListNode* t = p.get(); // tail
     
     for(const int item: a) {
         auto* node = new ListNode(item);
         t->next = node;
         t = t->next;
     }
-    
+
     return h->next;
+}
+
+/**
+ * C++17 introduced guaranteed copy elision.
+ * When returning a local object by value, the object is constructed directly in the caller’s storage.
+ * No copy or move occurs, and this is guaranteed by the standard.
+ * @param l
+ * @return
+ */
+inline vector<int> toVector(const ListNode* l) {
+    vector<int> v;
+
+    while (l) {
+        v.push_back(l->val);
+        l = l->next;
+    }
+
+    return v;
 }
 
 class Solution
@@ -37,9 +56,10 @@ public:
         int overflow = res_val / 10;
         
         auto *res = new ListNode(res_val % 10);
+        const shared_ptr<ListNode> t(res);
 
         // temporary point
-        ListNode *tp = res;
+        ListNode* tp = t.get();
 
         while (l1->next && l2->next)
         {

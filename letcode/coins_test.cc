@@ -3,7 +3,7 @@
 
 DEF_test(coins_dp)
 {
-    Comb c = Comb();
+    const auto c = Comb();
 
     DEF_case(coins_1)
     {
