@@ -1,3 +1,5 @@
+#include <utility>
+
 template <typename T>
 class smart_ptr
 {
@@ -29,8 +31,7 @@ public:
         ptr_ = nullptr;
         return ptr;
     }
-    void swap(smart_ptr &rhs)
-    {
+    void swap(smart_ptr &rhs) noexcept {
         using std::swap;
         swap(ptr_, rhs.ptr_);
     }

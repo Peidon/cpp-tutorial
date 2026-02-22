@@ -1,5 +1,3 @@
-
-#include <stdio.h>
 #include "shape.h"
 #include <utility>
 
@@ -26,7 +24,7 @@ void bar(const shape& s)
 void bar(shape&& s)
 {
   puts("bar(shape&&)");
-  foo(s); // s is an lvalue here !
+  foo(s); // s is a lvalue here !
 }
 
 // To keep the value category, lvalue is always lvalue, rvalue is rvalue
@@ -38,7 +36,7 @@ void bar(T&& s)
   // That equals static_cast<circle&&>(s)
 }
 
-// g++ shape.cpp obj.cpp -std=c++17 -o main.out
+// g++ raii/shape.cpp raii/obj.cpp -std=c++17 -o build/obj
 int main()
 {
   bar(circle());

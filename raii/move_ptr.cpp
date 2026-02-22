@@ -1,3 +1,4 @@
+#include <utility>
 template <typename T>
 class smart_ptr
 {
@@ -14,10 +15,10 @@ public:
 
     T &operator*() const { return *ptr_; }
     T *operator->() const { return ptr_; }
-    operator bool() const { return ptr_; }
+    explicit operator bool() const { return ptr_; }
 
     // Move Constructor
-    smart_ptr(smart_ptr &&other) { ptr_ = other.release(); }
+    smart_ptr(smart_ptr &&other) noexcept { ptr_ = other.release(); }
     smart_ptr &operator=(smart_ptr rhs)
     {
         rhs.swap(*this);
@@ -29,14 +30,13 @@ public:
         ptr_ = nullptr;
         return ptr;
     }
-    void swap(smart_ptr &rhs)
-    {
+    void swap(smart_ptr &rhs) noexcept {
         using std::swap;
         swap(ptr_, rhs.ptr_);
     }
 
     template <typename U>
-    smart_ptr(smart_ptr<U> &&other)
+    explicit smart_ptr(smart_ptr<U> &&other)
     {
         ptr_ = other.release();
     }

@@ -1,5 +1,4 @@
 #include <iostream>
-#include <type_traits>
 
 #include "TutorialConfig.h.in"
 #include <vector>
@@ -10,17 +9,17 @@
 
 using namespace std;
 
-int main(int argc, char **argv)
+int main(const int argc, char **argv)
 {
-    vector<int> a = {1, 2, 3};
-    vector<int> b = {4, 5, 6};
+    const vector<int> a = {1, 2, 3};
+    const vector<int> b = {4, 5, 6};
 
-    ListNode* l1 = buildList(a);
-    ListNode* l2 = buildList(b);
+    const ListNode* l1 = buildList(a);
+    const ListNode* l2 = buildList(b);
 
     const ListNode* l = Solution::addTwoNumbers(l1, l2);
 
-    while (l != nullptr)
+    while (l)
     {
         cout << l->val << " ";
         l = l->next;

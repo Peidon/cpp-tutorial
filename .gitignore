@@ -3,8 +3,7 @@
 .xmake/
 build/
 Testing/
-coost/
-spdlog/
+vendor/
 **.out
 **.dSYM
 **.log

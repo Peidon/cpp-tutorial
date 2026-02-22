@@ -31,7 +31,7 @@ inline ListNode *buildList(const vector<int>& a)
 class Solution
 {
 public:
-    static ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
+    static ListNode *addTwoNumbers(const ListNode *l1, const ListNode *l2)
     {
         int res_val = l1->val + l2->val;
         int overflow = res_val / 10;
