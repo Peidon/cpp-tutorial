@@ -3,16 +3,16 @@
 #include <map>
 #include <string>
 
-int main(int argc, char const *argv[])
+int main()
 {
     // hash table
-    std::unordered_map<int, std::string> u = {
+    const std::unordered_map<int, std::string> u = {
         {1, "1"},
         {3, "3"},
         {2, "2"}};
 
     // red-black tree
-    std::map<int, std::string> v = {
+    const std::map<int, std::string> v = {
         {1, "1"},
         {3, "3"},
         {2, "2"}};
