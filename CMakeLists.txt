@@ -8,9 +8,10 @@ enable_testing()
 add_subdirectory(vendor/coost)
 add_subdirectory(letcode)
 add_subdirectory(boost_tutorial)
+add_subdirectory(raii)
 
 # specify the C++ standard
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 add_executable(tutorial main.cpp)

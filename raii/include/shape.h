@@ -1,5 +1,4 @@
-#include <stdio.h>
-
+#pragma once
 enum class shape_type
 {
     circle,

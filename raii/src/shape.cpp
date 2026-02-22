@@ -1,4 +1,5 @@
-#include "shape.h"
+#include "../include/shape.h"
+#include <iostream>
 
 shape::shape() { puts("shape"); }
 shape::~shape() { puts("~shape"); }

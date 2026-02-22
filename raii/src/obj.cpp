@@ -1,5 +1,6 @@
-#include "shape.h"
+#include "../include/shape.h"
 #include <utility>
+#include <iostream>
 
 // Inference collapse
 

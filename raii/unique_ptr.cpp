@@ -1,5 +1,4 @@
 #include <utility>   // std::move, std::swap
-#include <cstddef>   // std::nullptr_t
 
 template <typename T>
 class unique_ptr
