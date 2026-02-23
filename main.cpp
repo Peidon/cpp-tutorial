@@ -2,19 +2,13 @@
 
 #include "TutorialConfig.h.in"
 #include <vector>
-#include "letcode/linked_list.h"
-
-#include "letcode/stock.h"
-#include "letcode/parenth_gen.h"
+#include "letcode/parentheses.h"
 
 using namespace std;
 
 int main(const int argc, char **argv)
 {
-    vector prices = {7,6,4,3,1};
-    cout << letcode::Solution::maxProfit(prices) << endl;
-
-    const vector<string> parenths = letcode22::Solution::generateParenthesis(3);
+    const vector<string> parenths = letscode22::Solution::generateParenthesis(Number);
     for (const string& item : parenths)
     {
         cout << item << endl;

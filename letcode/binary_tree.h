@@ -35,41 +35,27 @@ public:
         return max_d + 1;
     }
 
-    static int maxDepthUseQ(TreeNode *root)
+    static int maxDepthUseQ(const TreeNode *root)
     {
-        if (root == nullptr)
-        {
-            return 0;
-        }
+        if (root == nullptr){return 0;}
+        std::vector<TreeNode> q = {*root};
 
-        std::vector<TreeNode *> q = {root};
-
-        int ans = 0;
+        int maxDepth = 0;
         while (q.size())
         {
-
-            int siz = q.size(); // record the quantity of current level.
-            while (siz > 0)
+            // record the quantity of current level.
+            int siz = q.size();
+            while (siz-- > 0)
             {
-                const TreeNode *node = q.back();
+                const TreeNode *node = &q.back();
                 q.pop_back();
-                siz--;
 
-                if (node->left)
-                {
-                    q.push_back(node->left);
-                }
-
-                if (node->right)
-                {
-                    q.push_back(node->right);
-                }
-
+                if (node->left){q.push_back(*node->left);}
+                if (node->right){q.push_back(*node->right);}
             }
-
-            ans++;
+            maxDepth++;
         }
-        return ans;
+        return maxDepth;
     }
 };
 

@@ -3,7 +3,7 @@
 
 using namespace std;
 
-namespace letcode
+namespace letcode121
 {
 class Solution
 {
@@ -26,10 +26,7 @@ public:
             if (v > max_price)
             {
                 max_price = v;
-
-                profit = profit + max_price - min_price;
-
-                min_price = v;
+                profit = max(profit, max_price - min_price);
             }
         }
 

@@ -16,17 +16,14 @@ struct ListNode
 
 inline ListNode *buildList(const vector<int>& a)
 {
-    auto* h = new ListNode(); // head
-    const shared_ptr<ListNode> p(h);
-    ListNode* t = p.get(); // tail
+    ListNode h; // head
+    ListNode* t = &h; // tail
     
     for(const int item: a) {
-        auto* node = new ListNode(item);
-        t->next = node;
+        t->next = new ListNode(item);
         t = t->next;
     }
-
-    return h->next;
+    return h.next;
 }
 
 /**
@@ -50,64 +47,66 @@ inline vector<int> toVector(const ListNode* l) {
 class Solution
 {
 public:
-    static ListNode *addTwoNumbers(const ListNode *l1, const ListNode *l2)
+    static ListNode* swapPairs(ListNode* head) {
+        auto* dummy = new ListNode();
+        dummy->next = head;
+        ListNode* prev = dummy;
+
+        while (prev != nullptr && prev->next != nullptr && prev->next->next != nullptr) {
+            ListNode*left = prev->next;
+            ListNode*right = prev->next->next;
+
+            left->next = right->next;
+            right->next = left;
+            prev->next = right;
+
+            prev = right->next;
+        }
+
+        return dummy->next;
+    }
+
+
+    static ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
     {
-        int res_val = l1->val + l2->val;
-        int overflow = res_val / 10;
-        
-        auto *res = new ListNode(res_val % 10);
-        const shared_ptr<ListNode> t(res);
+        int overflow = 0;
+        ListNode* dummy = l1;
+        ListNode* point = l1;
 
-        // temporary point
-        ListNode* tp = t.get();
-
-        while (l1->next && l2->next)
+        while (l1 && l2 != nullptr)
         {
+            const int v = l1->val + l2->val + overflow;
+            point->val = v % 10;
+            point = point->next;
+
+            // reset next overflow
+            overflow = v / 10;
+
             l1 = l1->next;
             l2 = l2->next;
-
-            // build next node
-            res_val = l1->val + l2->val + overflow;
-            auto *next_node = new ListNode(res_val % 10);
-
-            // reset next overflow
-            overflow = res_val / 10;
-
-            // point to next node
-            tp->next = next_node;
-            tp = tp->next;
         }
 
-        while (l1->next)
+        while (l1 != nullptr)
         {
+            const int v = l1->val + overflow;
+            point->val = v % 10;
+            point = point->next;
+
+            // reset next overflow
+            overflow = v / 10;
             l1 = l1->next;
-            res_val = l1->val + overflow;
-
-            auto *next_node = new ListNode(res_val % 10);
-
-            // reset next overflow
-            overflow = res_val / 10;
-
-            // point to next node
-            tp->next = next_node;
-            tp = tp->next;
         }
 
-        while (l2->next)
+        point = l2;
+
+        while (point != nullptr)
         {
-            l2 = l2->next;
-            res_val = l2->val + overflow;
-
-            auto *next_node = new ListNode(res_val % 10);
-
+            const int v = point->val + overflow;
+            point -> val = v % 10;
             // reset next overflow
-            overflow = res_val / 10;
-
-            // point to next node
-            tp->next = next_node;
-            tp = tp->next;
+            overflow = v / 10;
+            point = point->next;
         }
-
-        return res;
+        return dummy;
     }
 };
