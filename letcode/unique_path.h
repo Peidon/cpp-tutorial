@@ -22,9 +22,8 @@ public:
                 if (obstacleGrid[i][j] == 1)
                 {
                     f[j] = 0;
-                    continue;
                 }
-                if (j - 1 >= 0 && obstacleGrid[i][j - 1] == 0)
+                else if (j > 0 && obstacleGrid[i][j - 1] == 0)
                 {
                     f[j] += f[j - 1];
                 }
@@ -34,6 +33,26 @@ public:
         return f.back();
     }
 
+
+    // letscode63 optimization
+    static int uniquePath(const vector<vector<int>> &obstacleGrid) {
+        const unsigned int dp_size = obstacleGrid.front().size();
+        vector<int> dp(dp_size, 0);
+        dp[0] = obstacleGrid[0][0] ^ 1;
+        for (int i=1; i<dp_size; i++) {
+            dp[i] = obstacleGrid[0][i] == 1 ? 0: dp[i-1];
+        }
+
+        for (int i=1; i < obstacleGrid.size(); i++) {
+            for (int j=0; j<dp_size; j++) {
+                dp[j] = obstacleGrid[i][j] == 1 ? 0 : j>0 ? dp[j] + dp[j-1] : dp[j];
+            }
+        }
+
+        return dp.back();
+    }
+
+    // letscode63
     static int uniquePathsWithObstacles(vector<vector<int>> &obstacleGrid)
     {
         vector<vector<int>> dp(obstacleGrid.begin(), obstacleGrid.end());
@@ -51,7 +70,7 @@ public:
 
             if (!v.empty() && i > 0)
             {
-                dp[i][0] = (obstacleGrid[i][0] == 1) ? 0 : dp[i - 1][0];
+                dp[i][0] = obstacleGrid[i][0] == 1 ? 0 : dp[i - 1][0];
             }
 
             for (int j = 1; j < v.size(); j++)
@@ -62,11 +81,11 @@ public:
                 }
                 else
                 {
-                    dp[i][j] = (i==0) ? dp[i][j - 1] : dp[i - 1][j] + dp[i][j - 1];
+                    dp[i][j] = i==0 ? dp[i][j - 1] : dp[i - 1][j] + dp[i][j - 1];
                 }
             }
         }
-        return dp[dp.size() - 1].back();
+        return dp.back().back();
     }
 };
 }
