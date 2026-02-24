@@ -37,37 +37,32 @@ public:
     static int uniquePathsWithObstacles(vector<vector<int>> &obstacleGrid)
     {
         vector<vector<int>> dp(obstacleGrid.begin(), obstacleGrid.end());
-
+        // if obstacleGrid[0][0] = 1, dp[0][0] = 0
+        // else obstacleGrid[0][0] = 0, dp[0][0] = 1
+        // because 1 represents obstacle, there are no path include square where an obstacle.
         dp[0][0] = obstacleGrid[0][0] ^ 1;
 
+        // assume no obstacle
+        // dp[0][x] = dp[0][x-1]
+        // dp[y][0] = dp[y-1][0]
         for (int i = 0; i < dp.size(); i++)
         {
             vector<int> v = dp.at(i);
 
             if (!v.empty() && i > 0)
             {
-                dp[i][0] = dp[i - 1][0];
-                if (obstacleGrid[i][0] == 1)
-                {
-                    dp[i][0] = 0;
-                }
+                dp[i][0] = (obstacleGrid[i][0] == 1) ? 0 : dp[i - 1][0];
             }
 
             for (int j = 1; j < v.size(); j++)
             {
-                if (i == 0)
-                {
-                    dp[i][j] = dp[i][j - 1];
-                }
                 if (obstacleGrid[i][j] == 1)
                 {
                     dp[i][j] = 0;
-                    continue;
                 }
-
-                if (i > 0)
+                else
                 {
-                    dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+                    dp[i][j] = (i==0) ? dp[i][j - 1] : dp[i - 1][j] + dp[i][j - 1];
                 }
             }
         }
