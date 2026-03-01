@@ -26,7 +26,3 @@ BOOST_AUTO_TEST_CASE(my_test)
   BOOST_TEST((2 + 3) == expected);
   BOOST_CHECK((2 + 3) == expected);
 }
-
-BOOST_AUTO_TEST_CASE(null_test)
-{
-}

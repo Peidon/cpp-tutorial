@@ -8,6 +8,8 @@ enable_testing()
 
 add_executable(bootest
         m_test.cpp
+        merge_intervals.cpp
+        merge_intervals.h
 )
 
 

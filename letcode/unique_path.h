@@ -33,8 +33,6 @@ public:
         return f.back();
     }
 
-
-    // letscode63 optimization
     static int uniquePath(const vector<vector<int>> &obstacleGrid) {
         const unsigned int dp_size = obstacleGrid.front().size();
         vector<int> dp(dp_size, 0);
@@ -51,8 +49,7 @@ public:
 
         return dp.back();
     }
-
-    // letscode63
+    
     static int uniquePathsWithObstacles(vector<vector<int>> &obstacleGrid)
     {
         vector<vector<int>> dp(obstacleGrid.begin(), obstacleGrid.end());
