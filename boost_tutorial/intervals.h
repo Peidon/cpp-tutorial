@@ -2,8 +2,8 @@
 // Created by Pedro's Jet on 25/2/2026.
 //
 
-#ifndef TUTORIAL_MERGE_INTERVALS_H
-#define TUTORIAL_MERGE_INTERVALS_H
+#ifndef TUTORIAL_INTERVALS_H
+#define TUTORIAL_INTERVALS_H
 #include <vector>
 #include <algorithm>
 
@@ -33,4 +33,4 @@ public:
 };
 } // letscode56
 
-#endif //TUTORIAL_MERGE_INTERVALS_H
+#endif //TUTORIAL_INTERVALS_H

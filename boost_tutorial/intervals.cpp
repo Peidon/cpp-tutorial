@@ -2,12 +2,12 @@
 // Created by Pedro's Jet on 25/2/2026.
 //
 
-#include "merge_intervals.h"
+#include "intervals.h"
 #include <boost/test/unit_test.hpp>
 
 namespace letscode56 {
 
-    BOOST_AUTO_TEST_CASE(merge_intervals) {
+    BOOST_AUTO_TEST_CASE(intervals) {
         vector<vector<int>> intervals = {{1,3},{2,6},{8,10},{15,18}};
         const vector<vector<int>> expected = {{1,6},{8,10},{15,18}};
         const vector<vector<int>> got = Solution::merge(intervals);
