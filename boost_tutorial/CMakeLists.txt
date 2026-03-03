@@ -12,6 +12,8 @@ add_executable(bootest
         intervals.h
         heap.cpp
         heap.h
+        trie.cpp
+        trie.h
 )
 
 
