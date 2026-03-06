@@ -6,9 +6,11 @@ enable_testing()
 
 # find_package(coost REQUIRED CONFIG)
 add_subdirectory(vendor/coost)
+add_subdirectory(vendor/spdlog)
 add_subdirectory(letcode)
 add_subdirectory(boost_tutorial)
 add_subdirectory(raii)
+add_subdirectory(concurrency)
 
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 17)

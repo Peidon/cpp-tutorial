@@ -7,9 +7,9 @@ using namespace std;
 
 void *say_hello(void *t_id)
 {
-    int tid = *((int *)t_id);
+    int tid = *static_cast<int *>(t_id);
     cout << "Hello World \t" << tid << endl;
-    pthread_exit(NULL);
+    pthread_exit(nullptr);
 }
 
 // g++ t.cpp -lpthread -o test.o
@@ -17,17 +17,17 @@ int main()
 {
     pthread_t tids[NUM_THREADS];
 
-    int indexes[NUM_THREADS];
+    // int indexes[NUM_THREADS];
 
-    for (int i = 0; i < NUM_THREADS; ++i)
+    for (pthread_t & tid : tids)
     {
 
-        int ret = pthread_create(&tids[i], NULL, say_hello, NULL);
+        const int ret = pthread_create(&tid, nullptr, say_hello, nullptr);
         if (ret != 0)
         {
             cout << "pthread_create error: error_code=" << ret << endl;
         }
     }
 
-    pthread_exit(NULL);
+    pthread_exit(nullptr);
 }
