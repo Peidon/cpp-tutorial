@@ -15,6 +15,10 @@ int main()
      vector<int> v;
      auto it = v.cbegin();
 
+     while (it < v.end()) {
+          cout << "hello";
+     }
+
      cout << "*** Using typeid\n";
      cout << typeid(const int).name()
           << endl;

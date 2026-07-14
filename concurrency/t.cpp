@@ -7,7 +7,7 @@ using namespace std;
 
 void *say_hello(void *t_id)
 {
-    int tid = *static_cast<int *>(t_id);
+    const int tid = *static_cast<int *>(t_id);
     cout << "Hello World \t" << tid << endl;
     pthread_exit(nullptr);
 }
