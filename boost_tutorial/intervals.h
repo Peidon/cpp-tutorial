@@ -9,8 +9,8 @@
 
 using namespace std;
 
-namespace letscode56 {
-class Solution {
+namespace letscode {
+class Solution56 {
 
     static bool compareIntervals(const vector<int> &a, const vector<int> &b) {
         return a.front() < b.front();
@@ -19,30 +19,24 @@ class Solution {
 public:
     static vector<vector<int>> merge(vector<vector<int>>& intervals) {
         std::sort(intervals.begin(), intervals.end(), compareIntervals);
-        vector<vector<int>> merged;
-        int cur = 0; // track the current iterate item which is going to push in the merged list
+        int offset = 0; // mark the merged position of original vector
 
-        // init i = 1, cur = 0
-        // cur + 1 <= i
         for (int i=1; i<intervals.size(); i++) {
 
-            // To find the first i, cur_end < i_start, indicates i_start can be next merged interval start
-            if (intervals[cur].back() < intervals[i].front()) {
+            if (intervals[offset].back() >= intervals[i].front()) {
 
-                // start is definite, choose the max end as final end from current and (i-1)_th interval
-                merged.push_back(vector<int>{intervals[cur].front(), max(intervals[cur].back(), intervals[i-1].back())});
+                // start is definite, update end
+                intervals[offset].back() = max(intervals[i].back(), intervals[offset].back());
 
-                // move current pointer farward to i
-                cur = i;
+            } else {
+                // move current pointer farward
+                intervals[++offset] = intervals[i];
             }
         }
 
-        // cur <= last (size - 1)
-        // determine last interval
-        merged.push_back(vector<int>{intervals[cur].front(), max(intervals[cur].back(), intervals.back().back())});
-        return merged;
+        return {intervals.begin(), intervals.begin() + offset + 1};
     }
 };
-} // letscode56
+} // letscode
 
 #endif //TUTORIAL_INTERVALS_H

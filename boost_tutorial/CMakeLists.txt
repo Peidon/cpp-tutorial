@@ -8,16 +8,14 @@ target_include_directories(type_index PRIVATE /opt/homebrew/opt/boost/include)
 enable_testing()
 
 add_executable(bootest
-#        m_test.cpp
-        intervals.cpp
+        boost_tests.cpp
         intervals.h
-        heap.cpp
         heap.h
         trie.cpp
         trie.h
 )
 
-# clang++ -DBOOST_TEST_DYN_LINK m_test.cpp -lboost_unit_test_framework
+# clang++ -DBOOST_TEST_DYN_LINK boost_tests.cpp -lboost_unit_test_framework
 target_compile_definitions(bootest PRIVATE BOOST_TEST_DYN_LINK)
 
 target_link_libraries(bootest
